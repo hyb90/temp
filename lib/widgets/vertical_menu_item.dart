@@ -5,10 +5,10 @@ import 'package:fensterlieferant/constants/style.dart';
 
 import 'custom_text.dart';
 
-class HorizontalMenuItem extends StatelessWidget {
+class VerticalMenuItem extends StatelessWidget {
   final String itemName;
   final Function onTap;
-  const HorizontalMenuItem({ Key key, this.itemName, this.onTap }) : super(key: key);
+  const VerticalMenuItem({ Key key, this.itemName, this.onTap }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +27,12 @@ class HorizontalMenuItem extends StatelessWidget {
                         if(!menuController.isActive(itemName))
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal:10 ),
-                          child: CustomText(text: itemName , color: menuController.isHovering(itemName) ? dark : light,size: 20,),
+                          child: CustomText(text: itemName , color: menuController.isHovering(itemName) ?  dark : windowLight ,size: 20,),
                         )
                         else
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal:10 ),
-                          child: CustomText(text: itemName , color: windowLight , size: 20, weight: FontWeight.bold,),
+                          child: CustomText(text: itemName , color: dark , size: 20, weight: FontWeight.bold,),
                         )
                       ],
                     ),

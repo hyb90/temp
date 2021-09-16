@@ -3,6 +3,9 @@ const rootRoute = "/";
 const homePageDisplayName= "Home";
 const homePageRoute = "/home";
 
+const konfigPageDisplayName= "Konfigurator";
+const konfigPageRoute = "/Konfig";
+
 const fensterPageDisplayName= "Fenster";
 const fensterPageRoute = "/Fenster";
 
@@ -26,6 +29,7 @@ class MenuItem {
 
 List<MenuItem> sideMenuItemRoutes = [
   MenuItem(homePageDisplayName, homePageRoute),
+  MenuItem(konfigPageDisplayName, konfigPageRoute),
   MenuItem(fensterPageDisplayName, fensterPageRoute),
   MenuItem(rollladenPageDisplayName, rollladenPageRoute),
   MenuItem(hebeschiebeanlagenPageDisplayName, hebeschiebeanlagenPageRoute),

@@ -1,15 +1,34 @@
+import 'package:fensterlieferant/constants/controllers.dart';
 import 'package:fensterlieferant/constants/style.dart';
 import 'package:fensterlieferant/helpers/responsiveness.dart';
 import 'package:fensterlieferant/widgets/custom_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({Key key}) : super(key: key);
 
   @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  ScrollController _scrollController;
+  @override
+  void initState() {
+    // TODO: implement initState
+    _scrollController = ScrollController();
+    _scrollController.addListener(_scrollListener);
+    super.initState();
+  }
+  _scrollListener() {
+    appBarController.changePosition(_scrollController.offset);
+  }
+  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      controller: _scrollController,
       child: Stack(
         children: [
           Container(// image below the top bar
@@ -173,7 +192,6 @@ class Home extends StatelessWidget {
                                   ),
                                 ),
                               ),
-
                             ],
                           ),
                           SizedBox(height: 10,),
@@ -297,6 +315,7 @@ class Home extends StatelessWidget {
                       height: MediaQuery.of(context).size.height,
                       width: MediaQuery.of(context).size.width,
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Center(child: CustomText(text:'Fenster online kaufen - jetzt Preise berechnen und bestellen!',color: windowDark,size: 30,),),
                           Row(
@@ -353,15 +372,92 @@ class Home extends StatelessWidget {
                             ],
                           ),
                         ],
-
                       )
                       ),
+                  Stack(
+                      children: [
+                        Container(// image below the top bar
+                          child: SizedBox(
+                            height: MediaQuery.of(context).size.height,
+                            width: MediaQuery.of(context).size.width,
+                            child: Image.asset(
+                              'assets/images/bg2.jpg',
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
+                        Container(// image below the top bar
+                          height: MediaQuery.of(context).size.height,
+                          width: MediaQuery.of(context).size.width,
+                          color: Colors.black.withOpacity(0.2),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.height * 0.40,
+                            left: MediaQuery.of(context).size.width / 15,
+                            right: MediaQuery.of(context).size.width / 2,
+                          ),
+                          child: RichText(
+                              text: TextSpan(children: [
+                                TextSpan(text: "Moderne Fenster von ",style: GoogleFonts.roboto(color: light)),
+                                TextSpan(text: "Drutex", style: GoogleFonts.roboto(color: windowLight)),
+                                TextSpan(text: " online konfigurieren und ",style: GoogleFonts.roboto(color: light)),
+                                TextSpan(text: "liefern", style: GoogleFonts.roboto(color: windowLight)),
+                                TextSpan(text: "  lassen.",style: GoogleFonts.roboto(color: light)),
+                              ], style: GoogleFonts.roboto(
+                                  fontSize: ResponsiveWidget.isMediumScreen(context) ?
+                                  38 : 45,
+                                  fontWeight: FontWeight.normal
+                              ))),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.height * 0.95,
+                            left: MediaQuery.of(context).size.width / 15,
+                            right: MediaQuery.of(context).size.width / 2,
+                            bottom: 20,
+                          ),
+                          child: Container(// image below the top bar
+                              height: MediaQuery.of(context).size.height*.7,
+                              width: MediaQuery.of(context).size.width*.5,
+                              decoration: BoxDecoration(
+                                color: windowDark,
+                                border: Border.all(
+                                        color: windowDark,
+                                        width: 2,),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+
+                        ),
+                      ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.height,
+                            right: MediaQuery.of(context).size.width /30,
+                            bottom: 20,
+                          ),
+                          child: Container(// image below the top bar
+                              height: MediaQuery.of(context).size.height*.7,
+                              width: MediaQuery.of(context).size.width*.5,
+                              decoration: BoxDecoration(
+                                color: windowLight,
+                                border: Border.all(
+                                        color: windowDark,
+                                        width: 2,),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+
+                        ),
+                      ),
+
+                      ]),
+
                   Container(
                       height: MediaQuery.of(context).size.height*0.4,
                       width: MediaQuery.of(context).size.width,
                       color: windowDark,
                       child: Text('footer'),
-                      )
+                      ),
                 ],
                 ),
           )

@@ -1,3 +1,4 @@
+import 'package:fensterlieferant/controllers/appbar_controller.dart';
 import 'package:fensterlieferant/controllers/menu_controller.dart';
 import 'package:fensterlieferant/controllers/navigation_controller.dart';
 import 'package:fensterlieferant/layout.dart';
@@ -12,6 +13,7 @@ import 'constants/style.dart';
 void main() {
   Get.put(MenuController());
   Get.put(NavigationController());
+  Get.put(AppBarController());
   runApp(MyApp());
 }
 
